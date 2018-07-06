@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+a:visited, a:link, a:active, a:hover {
+    color: #000000;
+}
+#logo_order {
+    height: 100px;
+    width: 1200px;
+    margin: 12px auto;
+}
+
+ #logo {
+    width: 240px;
+    vertical-align: middle;
+    margin-top: 10px;
+    float: left;
+}
+#order_ensure {
+    width: 634px;
+    height: 36px;
+    background: url(../img/order_success_bg.png) 0 0 no-repeat;
+    font: bold 14px/36px "Microsoft Yahei";
+    color: #646464;
+    margin: 30px 0 0;
+    float: right;
+}
+#current {
+    color: #fff;
+    width: 206px;
+}
+#order_ensure span {
+    width: 206px;
+    display: inline-block;
+    text-align: center;
+}
+#divide {
+    width: 100%;
+    border-bottom: 4px solid #ff2832;
+} 
+#table_info {
+	margin: 150px auto;
+}
+#table_info tr {
+	text-align: center;
+}
+#table_info img {
+	height: 162px;
+	width: 162px;
+}
+.title_info {
+	font-size: 30px;
+    color: #000;
+    line-height: 22px;
+    padding: 10px 0;
+    font-weight: bold;
+}
+.explain {
+	font-size: 20px;
+    color: #000;
+    padding: 20px 0 0 0;
+}
+.explain_td {
+	font-size: 20px;
+    color: #000;
+    padding: 5px 0 0 0;
+}
+.red {
+	color: red;
+}

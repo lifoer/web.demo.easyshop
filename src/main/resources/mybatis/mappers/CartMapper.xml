@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.es.mapper.CartMapper">
+
+	<resultMap type="Map" id="cartList">
+		<result property="userId" column="user_id"/>
+		<result property="goodsId" column="goods_id"/>
+		<result property="title" column="title"/>
+		<result property="image" column="image"/>
+		<result property="price" column="price"/>
+		<result property="num" column="num"/>
+	</resultMap>
+
+	<select id="queryCart" resultMap="cartList" parameterType="String">
+		SELECT user_id,goods_id,title,image,price,num FROM goods RIGHT JOIN (SELECT user_id,goods_id,num FROM cart WHERE user_id = #{userId}) cart ON goods.id = cart.goods_id; 
+	</select>
+	
+	<select id="checkCart"  resultType="Cart">
+		 select * from cart where user_id = #{userId} and goods_id = #{goodsId}
+	</select>
+	
+	<update id="updateCart">
+		update cart set num = #{num} where user_id = #{userId} and goods_id = #{goodsId}
+	</update>
+	
+	<update id="deleteCart">
+		delete from cart where user_id = #{userId} and goods_id = #{goodsId}
+	</update>
+	
+	<update id="deleteAllCart">
+		delete from cart where user_id = #{userId}
+	</update>
+	
+	<insert id="insertCart" parameterType="Cart">
+		insert into cart (id, user_id, goods_id, num) values (#{id}, #{userId}, #{goodsId}, #{num})
+	</insert>
+	
+</mapper>

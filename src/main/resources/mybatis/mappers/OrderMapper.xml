@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.es.mapper.OrderMapper">
+
+	<insert id="insertOrderGoods" parameterType="OrderGoods">
+		insert into
+		order_goods (id, goods_id, order_id, user_id, num) values (#{id},
+		#{goodsId}, #{orderId}, #{userId}, #{num})
+	</insert>
+
+	<insert id="insertOrderInfo" parameterType="OrderInfo">
+		insert into
+		order_info (id, address, name, phone, state, calendar, amount) values
+		(#{id},
+		#{address}, #{name}, #{phone}, #{state}, #{calendar},
+		#{amount})
+	</insert>
+
+
+	<resultMap type="Map" id="orderList">
+		<result property="orderId" column="order_id" />
+		<result property="userId" column="user_id" />
+		<result property="state" column="state" />
+		<result property="goodsId" column="goods_id" />
+		<result property="title" column="title" />
+		<result property="image" column="image" />
+		<result property="price" column="price" />
+		<result property="num" column="num" />
+		<result property="calendar" column="calendar" />
+		<result property="amount" column="amount" />
+	</resultMap>
+
+	<select id="queryOrder" resultMap="orderList" parameterType="String">
+		SELECT order_id,user_id,myorder.state
+		state,goods_id,title,image,price,num,calendar,amount
+		FROM goods RIGHT
+		JOIN
+		(SELECT order_id,goods_id,user_id,state,num,calendar,amount FROM
+		order_info
+		right JOIN (SELECT goods_id,order_id,user_id,num FROM
+		order_goods WHERE
+		user_id = #{userId}) order_goods ON order_info.id =
+		order_goods.order_id
+		) myorder ON goods.id = myorder.goods_id
+	</select>
+
+	<update id="updateOrderInfo">
+		update order_info set state = 1 where id = #{id}
+	</update>
+
+	<insert id="insertOrderPay" parameterType="OrderPay">
+		insert into
+		order_pay
+		(order_id, pay_id, amount)
+		values (#{orderId},
+		#{payId}, #{amount})
+	</insert>
+
+</mapper>

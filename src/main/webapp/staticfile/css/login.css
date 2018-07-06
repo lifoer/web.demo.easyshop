@@ -1,0 +1,41 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+a:visited, a:link, a:active, a:hover {
+	color: #000000;
+}
+#logo {
+	width: 240px;
+	height: 60px;
+	margin-left:300px;
+	margin-top: 20px;
+	display: block;
+}
+#login {
+	height: 300px;
+	width: 320px;
+	margin: 200px auto;
+}
+#login_button {
+	margin-bottom: 10px;
+	width: 305px;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    border: 0;
+    height: 44px;
+    text-align: center;
+    font: normal 20px/40px "Microsoft Yahei";
+    background: #ff2832;
+}
+.login_input {
+	margin-bottom: 10px;
+	height: 34px;
+	width: 300px;
+	display: block;
+	font-size: 18px;
+}
